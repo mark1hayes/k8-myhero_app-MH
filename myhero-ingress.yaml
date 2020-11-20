@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: myhero-ingress
+  labels:
+    app: myhero
+    tier: ui
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: myhero.k8-test.com
+    http:
+      paths:
+      - backend:
+          serviceName: myhero-ui
+          servicePort: 80
